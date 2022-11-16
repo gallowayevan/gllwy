@@ -1,0 +1,219 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=0" />
+  <title>Visual Analytics - Evan Galloway</title>
+  <link href="themes/dark.css" rel="stylesheet" type="text/css" />
+  <link href="big.css" rel="stylesheet" type="text/css" />
+  <script src="big.js"></script>
+</head>
+
+<body class="light">
+  <!-- Slide 1 -->
+  <div>
+    <h2 class="nowrap">INLS 641: Visual Analytics</h2>
+    <small class="nowrap">Evan Galloway</small><br>
+    <small class="nowrap">Program on Health Workforce Research and Policy</small><br>
+    <small class="nowrap">The Cecil G. Sheps Center for Health Services Research</small><br>
+    <small class="nowrap">The University of North Carolina at Chapel Hill</small><br>
+    <small class=nowrap>November 17, 2022</small>
+    <notes></notes>
+  </div>
+  <!-- Slide 2 -->
+  <div>
+    <h2>What I am going to cover</h2>
+    <ul>
+      <li>My background and where I am now</li>
+      <li>Projects
+        <ul>
+          <li>NC Health Workforce</li>
+          <li>NC Nursecast</li>
+        </ul>
+      </li>
+      <li>Tools
+        <ul>
+          <li>Observable
+          </li>
+          <li>Svelte</li>
+        </ul>
+      </li>
+    </ul>
+    <notes></notes>
+  </div>
+  <!-- Slide 3 -->
+  <div class='layout' style='grid-template-rows:95% 5%;'><img src="img/neuro_example2.png"
+      alt="A figure from a neuroscience article">
+    <div><small>Ji, Yuanyuan & Lu, Yuan & Yang, Feng & Shen, Wanhua & Feng, Linyin & Duan, Shumin & Lu, Bai. (2010).
+        Acute
+        and gradual increases in BDNF concentration elicit distinct signaling and functions in neurons. Nature
+        neuroscience. 13. 302-9. 10.1038/nn.2505.</small></div>
+    <notes>Started out working in neurobiology. This has a couple consequences for future career
+      - I learned the basic of how to program, mostly doing bioinformatics type stuff.
+      - I learned the value of well designed data visualization. One of the researchers I worked for (who co-wrote the
+      paper form which this diagram from) told me he almost always only looked at figures . . . Power of visualization.
+    </notes>
+  </div>
+  <!-- Slide 4 -->
+  <div class=layout><img src="img/sheps.png" alt="The Sheps Center Building">
+    <notes>After a few other detours, got my masters in BMHI at UNC. Took this class, systems analysis, databases, and
+      web databases, and then shortly after got a job at at Sheps. (seen here) Still work mostly from home.
+      Work for program on health workforce. Do a mix of data analysis and visualization.
+      The program does research on the health workforce, physicians, nurses, dentists, etc but we also collect and house
+      a 40+ year set of data.
+    </notes>
+  </div>
+  <!-- Slide 5 -->
+  <div class=layout style='grid-template-columns: 25% 75%;'>
+    <img src="img/databook.jpg" alt="Example data book cover.">
+    <img src="img/databook_inside.png" alt="Example page from HPDS data book">
+    <notes>We get data from the licensing boards (explain licensing)
+      And for most of those 40 years they produced something like this data book. I was hired to build data
+      visualizations around our data and our first project was to make an online data book.
+    </notes>
+  </div>
+  <!-- Slide 6 -->
+  <div class=layout><img src="img/sketch_00.png" alt="Example sketch with diagram of NC">
+  </div>
+  <!-- Slide 7 -->
+  <div class=layout>
+    <img src="img/sketch_01.png" alt="Example sketch with diagram of NC">
+  </div>
+  <!-- Slide 8 -->
+  <div class=layout>
+    <img src="img/sketch_02.png" alt="Example sketch with diagram of NC and line chart.">
+  </div>
+  <!-- Slide 9 -->
+  <div class=layout style='grid-template-columns: repeat(3, 30%);'>
+    <img src="img/demo_00.jpg" alt="Wireframe Diagram with map and line chart.">
+    <img src="img/demo_01.jpg" alt="Wireframe Diagram of front page.">
+    <img src="img/demo_02.jpg" alt="Wireframe Diagram with map and bar chart.">
+  </div>
+  <!-- Slide 10 -->
+  <div class=layout style='grid-template-columns: 60% 40%;'>
+    <img src="img/demo_03.jpg" alt="Demo with map, bar chart, and pie chart.">
+    <img src="img/demo_04.jpg" alt="Demo with map and bar chart.">
+  </div>
+  <!-- Slide 10 -->
+  <div class=layout>
+    <img src="img/demo_05.png" alt="Initial live version of website.">
+  </div>
+  <!-- Slide 11 -->
+  <div class=layout style='grid-template-rows: 90% 10%;'>
+    <a href="https://nchealthworkforce.unc.edu/interactive/supply/"><img src="img/current_hpds.png"
+        alt="Current version of HPDS supple website."></a><small class=nowrap><a
+        href="https://nchealthworkforce.unc.edu/interactive/supply/">https://nchealthworkforce.unc.edu/interactive/supply/
+      </a></small>
+    <notes>
+      Histogram gives sense of relationship between distribution and colors. Use spark chart type layout for compact
+      display. Also dont have to interact to get a lot of information. Can see begin and end values.
+      Select year, geo, layers (urban layer). Download image, csv of data.
+
+      Built using Vue.js and whole website is a static website built with Hugo and hosted on netlify.
+
+      The website also has some blog posts, with usually static graphics.
+      Also some other interactive. Favorite is this D3 chart I built using data on the age and number of health
+      providers in rural and metro areas.
+
+      I like having these little inset maps as reference. I like the transitions, including the text transition.
+    </notes>
+  </div>
+  <!-- Slide 12 -->
+  <div class=layout style='grid-template-rows: 90% 10%;'>
+    <a href="https://docflows.unc.edu/"><img src="img/docflows.png" alt="Docflows website with US map."></a>
+    <small class=nowrap><a href="https://docflows.unc.edu/">https://docflows.unc.edu/
+      </a></small>
+    <notes>Very simple design. Just uses D3 and a database. Neat legend - idea from Nadi Bremer.</notes>
+  </div>
+  <!-- Slide 13 -->
+  <div class=layout style='grid-template-rows: 90% 10%;'>
+    <a href="https://ncnursecast.unc.edu/"><img src="img/nursecast_map.png"
+        alt="Map and row chart from NC Nursecast."></a>
+    <small class=nowrap><a href="https://ncnursecast.unc.edu/">https://ncnursecast.unc.edu/
+      </a></small>
+    <notes>Just launched. Run through function of model and diffusion viz.
+
+      Built using Svelte, D3, mapbox gl js, Hugo, Bulma
+
+    </notes>
+  </div>
+  <!-- Slide 14 -->
+  <div>
+    Observable
+    <li class="nowrap"><a href="https://observablehq.com/">https://observablehq.com/</a></li>
+    <li class="nowrap"><a
+        href="https://observablehq.com/collection/@gallowayevan/examples">https://observablehq.com/collection/@gallowayevan/examples</a>
+    </li>
+    
+        
+    <notes>examples of how I use observable
+      -intro to observable
+      - show tutorials
+      - doing more data analysis in js
+      - arquero
+      - Observable Plot?
+      - ABP region map
+      - https://observablehq.com/d/3bfe237e0cdf38d6
+      - easy collaboration
+      - making static graphics
+      - diagram for elizabeth
+      - https://observablehq.com/@gallowayevan/static-mapbox-map
+      - figure things out
+      - https://observablehq.com/@gallowayevan/jitter-duplicate-points
+      - comparison of urban areas
+      - https://observablehq.com/@gallowayevan/comparison-of-urban-areas-2000-to-2018-north-carolina
+      - prototypes
+      - like using drop shadows to create 3d effect
+      - remix of veltman
+      - https://observablehq.com/@gallowayevan/using-inner-glow-to-show-grouping
+      - https://observablehq.com/@gallowayevan/comparison-of-rural-definitions-inner-glow-edition</notes>
+  </div>
+  <!-- Slide 15 -->
+  <div>
+    Svelte
+    <ul>
+      <li class="nowrap"><a href="https://svelte.dev/">https://svelte.dev/</a></li>
+    
+      <li class="nowrap"><a href="https://kit.svelte.dev/">https://kit.svelte.dev/</a></li>
+    </ul>
+    <notes>introduction to svelte
+      http://lessons.vaclab.unc.edu/lets_make_a_bar_chart_svg
+</notes>
+  </div>
+  <!-- Last slide -->
+  <div>
+    <div>
+      <h1 class="nowrap">Find us, Follow Us, Sign up For our Newsletter
+      </h1>
+    </div>
+
+    <div>
+      Our websites
+      <ul>
+        <li><a href="https://go.unc.edu/Workforce">go.unc.edu/Workforce</a></li>
+        <li><a href="https://nchealthworkforce.unc.edu">nchealthworkforce.unc.edu</a></li>
+        <li><a href="https://ncnursecast.unc.edu">ncnursecast.unc.edu</a></li>
+      </ul>
+    </div>
+    <div>
+      Twitter
+      <ul>
+        <li><a href="https://twitter.com/WorkforceNC">@WorkforceNC</a></li>
+        <li><a href="https://twitter.com/UNC_PHWRP">@UNC_PHWRP</a></li>
+      </ul>
+    </div>
+    <div>
+      My work
+      <ul>
+        <li><a href="mailto:evan.galloway@unc.edu">evan.galloway@unc.edu</a></li>
+        <li><a href="https://github.com/gallowayevan">github.com/gallowayevan</a></li>
+        <li><a href="https://observablehq.com/@gallowayevan">observablehq.com/@gallowayevan</a></li>
+      </ul>
+    </div>
+
+    <notes></notes>
+  </div>
+</body>
+
+</html>
