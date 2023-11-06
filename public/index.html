@@ -3,273 +3,74 @@
 
 <head>
   <meta charset="utf-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=0" />
-  <title>Visual Analytics - Evan Galloway</title>
-  <link href="themes/dark.css" rel="stylesheet" type="text/css" />
-  <link href="big.css" rel="stylesheet" type="text/css" />
-  <script src="big.js"></script>
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Evan Galloway</title>
+  <style>
+    body {
+      text-align: center;
+      font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Helvetica, Arial, sans-serif, 'Apple Color Emoji', 'Segoe UI Emoji', 'Segoe UI Symbol'
+    }
+
+    h2 {
+      font-variant: small-caps;
+    }
+
+    h3 {
+      font-variant: small-caps;
+    }
+    
+    .no {
+      opacity: 0;
+        position: absolute;
+        top: 0;
+        left: 0;
+        height: 0;
+        width: 0;
+        z-index: -1;
+    }
+    
+  </style>
 </head>
 
-<body class="light">
-  <!-- Slide 1 -->
-  <div>
-    <h2 class="nowrap">INLS 641: Visual Analytics</h2>
-    <small class="nowrap">Evan Galloway</small><br>
-    <small class="nowrap">Program on Health Workforce Research and Policy</small><br>
-    <small class="nowrap">The Cecil G. Sheps Center for Health Services Research</small><br>
-    <small class="nowrap">The University of North Carolina at Chapel Hill</small><br>
-    <small class=nowrap>November 7, 2023</small>
-    <notes></notes>
-  </div>
-  <!-- Slide 2 -->
-  <div>
-    <h2>What I am going to cover</h2>
-    <ul>
-      <li>My background and where I am now</li>
-      <li>Projects
-        <ul>
-          <li>NC Health Workforce</li>
-          <li>NC Nursecast</li>
-        </ul>
-      </li>
-      <li>Tools
-        <ul>
-          <li>Observable + Observable Plot
-          </li>
-          <li>Svelte</li>
-        </ul>
-      </li>
-    </ul>
-    <notes></notes>
-  </div>
-  <!-- Slide 3 -->
-  <div class='layout' style='grid-template-rows:95% 5%;'><img src="img/neuro_example2.png"
-      alt="A figure from a neuroscience article">
-    <div><small>Ji, Yuanyuan & Lu, Yuan & Yang, Feng & Shen, Wanhua & Feng, Linyin & Duan, Shumin & Lu, Bai. (2010).
-        Acute
-        and gradual increases in BDNF concentration elicit distinct signaling and functions in neurons. Nature
-        neuroscience. 13. 302-9. 10.1038/nn.2505.</small></div>
-    <notes>Started out working in neurobiology. This has a couple consequences for future career
-      - I learned the basic of how to program, mostly doing bioinformatics type stuff.
-      - I learned the value of well designed data visualization. One of the researchers I worked for (who co-wrote the
-      paper form which this diagram from) told me he almost always only looked at figures . . . Power of visualization.
-    </notes>
-  </div>
-  <!-- Slide 4 -->
-  <div class=layout><img src="img/sheps.png" alt="The Sheps Center Building">
-    <notes>After a few other detours, got my masters in BMHI at UNC. Took this class, systems analysis, databases, and
-      web databases, and then shortly after got a job at at Sheps. (seen here) Still work mostly from home.
-      Work for program on health workforce. Do a mix of data analysis and visualization.
-      The program does research on the health workforce, physicians, nurses, dentists, etc but we also collect and house
-      a 40+ year set of data.
-    </notes>
-  </div>
-  <!-- Slide 5 -->
-  <div class=layout style='grid-template-columns: 25% 75%;'>
-    <img src="img/databook.jpg" alt="Example data book cover.">
-    <img src="img/databook_inside.png" alt="Example page from HPDS data book">
-    <notes>We get data from the licensing boards (explain licensing)
-      And for most of those 40 years they produced something like this data book. I was hired to build data
-      visualizations around our data and our first project was to make an online data book.
-    </notes>
-  </div>
-  <!-- Slide 6 -->
-  <div class=layout><img src="img/sketch_00.png" alt="Example sketch with diagram of NC">
-  </div>
-  <!-- Slide 7 -->
-  <div class=layout>
-    <img src="img/sketch_01.png" alt="Example sketch with diagram of NC">
-  </div>
-  <!-- Slide 8 -->
-  <div class=layout>
-    <img src="img/sketch_02.png" alt="Example sketch with diagram of NC and line chart.">
-  </div>
-  <!-- Slide 9 -->
-  <div class=layout style='grid-template-columns: repeat(3, 30%);'>
-    <img src="img/demo_00.jpg" alt="Wireframe Diagram with map and line chart.">
-    <img src="img/demo_01.jpg" alt="Wireframe Diagram of front page.">
-    <img src="img/demo_02.jpg" alt="Wireframe Diagram with map and bar chart.">
-  </div>
-  <!-- Slide 10 -->
-  <div class=layout style='grid-template-columns: 60% 40%;'>
-    <img src="img/demo_03.jpg" alt="Demo with map, bar chart, and pie chart.">
-    <img src="img/demo_04.jpg" alt="Demo with map and bar chart.">
-  </div>
-  <!-- Slide 10 -->
-  <div class=layout>
-    <img src="img/demo_05.png" alt="Initial live version of website.">
-  </div>
-  <!-- Slide 11 -->
-  <div class=layout style='grid-template-rows: 90% 10%;'>
-    <a href="https://nchealthworkforce.unc.edu/interactive/supply/"><img src="img/current_hpds.png"
-        alt="Current version of HPDS supple website."></a><small class=nowrap><a
-        href="https://nchealthworkforce.unc.edu/interactive/supply/">https://nchealthworkforce.unc.edu/interactive/supply/
-      </a></small>
-    <notes>
-      Histogram gives sense of relationship between distribution and colors. Use spark chart type layout for compact
-      display. Also dont have to interact to get a lot of information. Can see begin and end values.
-      Select year, geo, layers (urban layer). Download image, csv of data.
-
-      Built using Vue.js and whole website is a static website built with Hugo and hosted on netlify.
-
-      The website also has some blog posts, with usually static graphics.
-      Also some other interactive. Favorite is this D3 chart I built using data on the age and number of health
-      providers in rural and metro areas.
-
-      I like having these little inset maps as reference. I like the transitions, including the text transition.
-    </notes>
-  </div>
-  <!-- Slide 12 -->
-  <div class=layout style='grid-template-rows: 90% 10%;'>
-    <a href="https://workforce-sveltekit-dept-healthworkforce.apps.cloudapps.unc.edu"><img src="img/dev_website.png"
-        alt="Development version of HPDS supple website."></a>
-        <small class=nowrap><a
-          href="https://workforce-sveltekit-dept-healthworkforce.apps.cloudapps.unc.edu">New Development Version (Sveltekit + Observable Plot)
-        </a></small>
-    <notes>
-   New version of website is in development. This version uses Sveltekit which is a javascript framework that differs from Svelte in including things like routing that you might want to build a more complete website.
-
-   The whole website has been rewritten but mostly looks the same. One of the main benefits is less context switching. Previously I was switching between the Hugo build process and the Vue codebase for the visualization. Now, I can stay primarily in Svelte and javascript land for developing the website, which makes things easier. Also, I can do dynamic routing for the supply viz, which I'm excited about. This is potentially very useful, as we have heard that people would like to share direct links to specific professions and/or counties. The visualizations here are built using the Obervable Plot library and are mostly here to test that things are wired up correctly (e.g., the page is correctly pulling data from the database). However, I think I am going to go back to a more expansive layout. There is a lot of detail we are not able to convey in the compact dashboard layout. For instance, we are seeing an increasing amount of missingness for certain variables, like race, and we want to show that an convey caution when interpreting the percentage undderrepresented.
-
-   I'll talk more about Observable Plot, but my plan is to use it as much as possible vs building my own charts using D3 and Svelte, mostly to make things more maintainable and obvious to other developers.
-    </notes>
-  </div>
-
-
-  <!-- Slide 13 -->
-  <div class=layout style='grid-template-rows: 90% 10%;'>
-    <a href="https://docflows.unc.edu/"><img src="img/docflows.png" alt="Docflows website with US map."></a>
-    <small class=nowrap><a href="https://docflows.unc.edu/">https://docflows.unc.edu/
-      </a></small>
-    <notes>Very simple design. Just uses D3 and a database. Neat legend - idea from Nadi Bremer.</notes>
-  </div>
-  <!-- Slide 14 -->
-  <div class=layout style='grid-template-rows: 90% 10%;'>
-    <a href="https://ncnursecast.unc.edu/"><img src="img/nursecast_map.png"
-        alt="Map and row chart from NC Nursecast."></a>
-    <small class=nowrap><a href="https://ncnursecast.unc.edu/">https://ncnursecast.unc.edu/
-      </a></small>
-    <notes>Just launched. Run through function of model and diffusion viz.
-
-      Built using Svelte, D3, mapbox gl js, Hugo, Bulma
-
-    </notes>
-  </div>
-  <!-- Slide 15 -->
-  <div>
-    Observable
-    <li class="nowrap"><a href="https://observablehq.com/tutorials">Observable</a></li>
-    <li class="nowrap"><a href="https://observablehq.com/plot/getting-started">Observable Plot</a></li>
-    
-    <li class="nowrap"><a href="https://observablehq.com/@observablehq/plot-gallery">Observable Plot Examples</a></li>
-    <li class="nowrap"><a
-        href="https://observablehq.com/collection/@gallowayevan/examples">Some of My Notebooks</a>
-    </li>
-    <li class="nowrap"><a
-      href="https://observablehq.com/d/56a6ebf55a4e423d">Exploring the Area Health Resources File</a></li>
-    
-        <li class="nowrap"><a
-          href="https://observablehq.com/@gallowayevan/timeline-with-observable-plot">Timeline</a></li>
-
-          <li class="nowrap"><a
-            href="https://observablehq.com/@gallowayevan/census-api-find-variables">Using the Census API</a></li>
-
-        
-    <notes>Observable
-
-    Show tutorials but then open blank notebook and show reactivity, including viewof keyword.
-
-    Open examples notebook and briefly discuss.
-
-    Dive into more specific examples, AHRF, timeline, and then ADI, SVI
-    
-    </notes>
-  </div>
-
-      <!-- Slide 16 -->
-      <div class=layout style='grid-template-rows: 90% 10%;'>
-        <a href="https://www.neighborhoodatlas.medicine.wisc.edu/"><img src="img/adi_components.png"
-            alt="Components of ADI with ones relating to housing cost highlighted."></a>
-            <small class=nowrap><a
-              href="https://www.neighborhoodatlas.medicine.wisc.edu/">Area Deprivation Index
-            </a></small>
-        <notes>
-          Based on ACS data.
-    Increasingly used in research as goto index. Also used by Centers for Medicare & Medicaid Services for some payment models, i.e., increasing payments based on deprivation.
-Neat because it is block group level (which they call neighborhood.) Also this this basic map has been good for spreading it.
-    However, recently came under scrutiny because of concerns that non-normalized housing components might be making certain areas look less deprived. Skewed towards less urban areas.
-        </notes>
-      </div>
-      
-
-        <!-- Slide 17 -->
-        <div class=layout style='grid-template-rows: 90% 10%;'>
-          <a href="https://www.atsdr.cdc.gov/placeandhealth/svi/documentation/SVI_documentation_2020.html"><img src="img/SVI-Variables.png"
-              alt="Components of SVI."></a>
-              <small class=nowrap><a
-                href="https://www.atsdr.cdc.gov/placeandhealth/svi/documentation/SVI_documentation_2020.html">Social Vulnerability Index
-              </a></small>
-          <notes>
-  Another index that has been used a lot is the CDC's tract and county based Social Vulnerability Index. Has more components. Includes race and ethnicity as a component. More straight-forward in everything just being percentile ranked and added up. Also note that these is nothing like Median Home value that would skew away from urban areas. Instead they have things like housing cost burden and multi-unit structures. 
-
-  Now, I am somewhat agnostic about which of these is better. I think you just have to thing about how you are going to use and interpret these. But it seemed clear that these much diverge a fair amount. So I made a map to take a look.
-          </notes>
-        </div>
-
-    <!-- Slide 18 -->
-    <div class=layout style='grid-template-rows: 90% 10%;'>
-      <a href="https://observablehq.com/d/fbb0a2b80d771787"><img src="img/adi_svi_screenshot.png"
-          alt="Screenshot of map showing comparison of ADI and SVI."></a>
-          <small class=nowrap><a
-            href="https://observablehq.com/d/fbb0a2b80d771787">Comparing the Area Deprivation Index to the Sovial Vulnerability Index
-          </a></small>
-      <notes>
-  This comparison is not perfect because I had to have block groups inherit the SVI from their containing tracts. I like in the SVI that you can see what components are pulling things in a certian directions. (look near downtown chapel hill)
-Look in NYC too.     
-
-</notes>
-    </div>
-
+<body>
+  <h2>Evan Galloway</h2>
+  <h3>Interactive Data Visualization</h3>
+  <p><a href="https://nchealthworkforce.unc.edu">Sheps Health Workforce NC</a> : <a href="https://nchealthworkforce.unc.edu/interactive/supply/">Workforce Supply</a>, <a href="https://nchealthworkforce.unc.edu/interactive/age_rural_by_profession/">Age Distribution</a></p>
+  <p><a href="https://docflows.unc.edu">DocFlows</a></p>
+  <p><a href="https://observablehq.com/@gallowayevan">Observable</a></p>
+  <p><a href="https://github.com/gallowayevan">Github</a></p>
   
-  <!-- Slide 19 -->
-  <div>
-    Svelte
-    <ul>
-      <li class="nowrap"><a href="https://svelte.dev/">Svelte</a></li>
-    
-      <li class="nowrap"><a href="https://kit.svelte.dev/">Sveltekit</a></li>
-    </ul>
-    <notes>introduction to svelte
-      http://lessons.vaclab.unc.edu/lets_make_a_bar_chart_svg
-</notes>
-  </div>
-  <!-- Last slide -->
-  <div>
-    <div>
-      <h1 class="nowrap">
-      </h1>
-    </div>
+  <p>Tools I Like and Use: 
+    <a href="https://d3js.org/">D3</a>,
+    <a href="https://observablehq.com/">Observable</a>,
+    <a href="https://svelte.dev/">Svelte.js</a>,
+    <a href="https://vuejs.org/">Vue.js</a>,
+    <a href="https://docs.mapbox.com/mapbox-gl-js/api/">Mapbox GL JS</a>,
+    <a href="https://www.r-project.org/">R</a> and <a href="https://rstudio.com/">R Studio</a>,
+    <a href="https://turfjs.org">Turf.js</a>,
+    <a href="https://www.stata.com/">Stata</a>
+  </p>
 
-    <div>
-      Our websites
-      <ul>
-        <li><a href="https://go.unc.edu/Workforce">Carolina Health Workforce Research Center & Program on Health Workforce Research and Policy</a></li>
-        <li><a href="https://nchealthworkforce.unc.edu">NC Health Workforce</a></li>
-        <li><a href="https://ncnursecast.unc.edu">Nursecast</a></li>
-        <li><a href="https://bhworkforce.unc.edu/">Behavioral Health Workforce Research Center</a></li>
-      </ul>
-    </div>
-    <div>
-      My work
-      <ul>
-        <li><a href="mailto:evan.galloway@unc.edu">evan.galloway@unc.edu</a></li>
-        <li><a href="https://github.com/gallowayevan">github.com/gallowayevan</a></li>
-        <li><a href="https://observablehq.com/@gallowayevan">observablehq.com/@gallowayevan</a></li>
-      </ul>
-    </div>
+  <form name="contact" method="POST" data-netlify="true" netlify-honeypot="no-field">
+    Contact
+   <p class="no">
+    <label>Don’t fill this out if you're human: <input name="no-field" /></label>
+  </p>
+    <p>
+      <label>Your Name: <input type="text" name="name" /></label>
+    </p>
+    <p>
+      <label>Your Email: <input type="email" name="email" /></label>
+    </p>
+    <p>
+      <label>Message: <textarea name="message"></textarea></label>
+    </p>
+    <p>
+      <button type="submit">Send</button>
+    </p>
+  </form>
 
-    <notes></notes>
-  </div>
+
 </body>
 
 </html>
