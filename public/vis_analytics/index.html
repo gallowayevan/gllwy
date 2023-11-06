@@ -18,7 +18,7 @@
     <small class="nowrap">Program on Health Workforce Research and Policy</small><br>
     <small class="nowrap">The Cecil G. Sheps Center for Health Services Research</small><br>
     <small class="nowrap">The University of North Carolina at Chapel Hill</small><br>
-    <small class=nowrap>November 17, 2022</small>
+    <small class=nowrap>November 7, 2023</small>
     <notes></notes>
   </div>
   <!-- Slide 2 -->
@@ -34,7 +34,7 @@
       </li>
       <li>Tools
         <ul>
-          <li>Observable
+          <li>Observable + Observable Plot
           </li>
           <li>Svelte</li>
         </ul>
@@ -121,12 +121,29 @@
   </div>
   <!-- Slide 12 -->
   <div class=layout style='grid-template-rows: 90% 10%;'>
+    <a href="https://workforce-sveltekit-dept-healthworkforce.apps.cloudapps.unc.edu"><img src="img/dev_website.png"
+        alt="Development version of HPDS supple website."></a>
+        <small class=nowrap><a
+          href="https://workforce-sveltekit-dept-healthworkforce.apps.cloudapps.unc.edu">New Development Version (Sveltekit + Observable Plot)
+        </a></small>
+    <notes>
+   New version of website is in development. This version uses Sveltekit which is a javascript framework that differs from Svelte in including things like routing that you might want to build a more complete website.
+
+   The whole website has been rewritten but mostly looks the same. One of the main benefits is less context switching. Previously I was switching between the Hugo build process and the Vue codebase for the visualization. Now, I can stay primarily in Svelte and javascript land for developing the website, which makes things easier. Also, I can do dynamic routing for the supply viz, which I'm excited about. This is potentially very useful, as we have heard that people would like to share direct links to specific professions and/or counties. The visualizations here are built using the Obervable Plot library and are mostly here to test that things are wired up correctly (e.g., the page is correctly pulling data from the database). However, I think I am going to go back to a more expansive layout. There is a lot of detail we are not able to convey in the compact dashboard layout. For instance, we are seeing an increasing amount of missingness for certain variables, like race, and we want to show that an convey caution when interpreting the percentage undderrepresented.
+
+   I'll talk more about Observable Plot, but my plan is to use it as much as possible vs building my own charts using D3 and Svelte, mostly to make things more maintainable and obvious to other developers.
+    </notes>
+  </div>
+
+
+  <!-- Slide 13 -->
+  <div class=layout style='grid-template-rows: 90% 10%;'>
     <a href="https://docflows.unc.edu/"><img src="img/docflows.png" alt="Docflows website with US map."></a>
     <small class=nowrap><a href="https://docflows.unc.edu/">https://docflows.unc.edu/
       </a></small>
     <notes>Very simple design. Just uses D3 and a database. Neat legend - idea from Nadi Bremer.</notes>
   </div>
-  <!-- Slide 13 -->
+  <!-- Slide 14 -->
   <div class=layout style='grid-template-rows: 90% 10%;'>
     <a href="https://ncnursecast.unc.edu/"><img src="img/nursecast_map.png"
         alt="Map and row chart from NC Nursecast."></a>
@@ -138,44 +155,89 @@
 
     </notes>
   </div>
-  <!-- Slide 14 -->
+  <!-- Slide 15 -->
   <div>
     Observable
-    <li class="nowrap"><a href="https://observablehq.com/">https://observablehq.com/</a></li>
-    <li class="nowrap"><a
-        href="https://observablehq.com/collection/@gallowayevan/examples">https://observablehq.com/collection/@gallowayevan/examples</a>
-    </li>
+    <li class="nowrap"><a href="https://observablehq.com/tutorials">Observable</a></li>
+    <li class="nowrap"><a href="https://observablehq.com/plot/getting-started">Observable Plot</a></li>
     
+    <li class="nowrap"><a href="https://observablehq.com/@observablehq/plot-gallery">Observable Plot Examples</a></li>
+    <li class="nowrap"><a
+        href="https://observablehq.com/collection/@gallowayevan/examples">Some of My Notebooks</a>
+    </li>
+    <li class="nowrap"><a
+      href="https://observablehq.com/d/56a6ebf55a4e423d">Exploring the Area Health Resources File</a></li>
+    
+        <li class="nowrap"><a
+          href="https://observablehq.com/@gallowayevan/timeline-with-observable-plot">Timeline</a></li>
+
+          <li class="nowrap"><a
+            href="https://observablehq.com/@gallowayevan/census-api-find-variables">Using the Census API</a></li>
+
         
-    <notes>examples of how I use observable
-      -intro to observable
-      - show tutorials
-      - doing more data analysis in js
-      - arquero
-      - Observable Plot?
-      - ABP region map
-      - https://observablehq.com/d/3bfe237e0cdf38d6
-      - easy collaboration
-      - making static graphics
-      - diagram for elizabeth
-      - https://observablehq.com/@gallowayevan/static-mapbox-map
-      - figure things out
-      - https://observablehq.com/@gallowayevan/jitter-duplicate-points
-      - comparison of urban areas
-      - https://observablehq.com/@gallowayevan/comparison-of-urban-areas-2000-to-2018-north-carolina
-      - prototypes
-      - like using drop shadows to create 3d effect
-      - remix of veltman
-      - https://observablehq.com/@gallowayevan/using-inner-glow-to-show-grouping
-      - https://observablehq.com/@gallowayevan/comparison-of-rural-definitions-inner-glow-edition</notes>
+    <notes>Observable
+
+    Show tutorials but then open blank notebook and show reactivity, including viewof keyword.
+
+    Open examples notebook and briefly discuss.
+
+    Dive into more specific examples, AHRF, timeline, and then ADI, SVI
+    
+    </notes>
   </div>
-  <!-- Slide 15 -->
+
+      <!-- Slide 16 -->
+      <div class=layout style='grid-template-rows: 90% 10%;'>
+        <a href="https://www.neighborhoodatlas.medicine.wisc.edu/"><img src="img/adi_components.png"
+            alt="Components of ADI with ones relating to housing cost highlighted."></a>
+            <small class=nowrap><a
+              href="https://www.neighborhoodatlas.medicine.wisc.edu/">Area Deprivation Index
+            </a></small>
+        <notes>
+          Based on ACS data.
+    Increasingly used in research as goto index. Also used by Centers for Medicare & Medicaid Services for some payment models, i.e., increasing payments based on deprivation.
+Neat because it is block group level (which they call neighborhood.) Also this this basic map has been good for spreading it.
+    However, recently came under scrutiny because of concerns that non-normalized housing components might be making certain areas look less deprived. Skewed towards less urban areas.
+        </notes>
+      </div>
+      
+
+        <!-- Slide 17 -->
+        <div class=layout style='grid-template-rows: 90% 10%;'>
+          <a href="https://www.atsdr.cdc.gov/placeandhealth/svi/documentation/SVI_documentation_2020.html"><img src="img/SVI-Variables.png"
+              alt="Components of SVI."></a>
+              <small class=nowrap><a
+                href="https://www.atsdr.cdc.gov/placeandhealth/svi/documentation/SVI_documentation_2020.html">Social Vulnerability Index
+              </a></small>
+          <notes>
+  Another index that has been used a lot is the CDC's tract and county based Social Vulnerability Index. Has more components. Includes race and ethnicity as a component. More straight-forward in everything just being percentile ranked and added up. Also note that these is nothing like Median Home value that would skew away from urban areas. Instead they have things like housing cost burden and multi-unit structures. 
+
+  Now, I am somewhat agnostic about which of these is better. I think you just have to thing about how you are going to use and interpret these. But it seemed clear that these much diverge a fair amount. So I made a map to take a look.
+          </notes>
+        </div>
+
+    <!-- Slide 18 -->
+    <div class=layout style='grid-template-rows: 90% 10%;'>
+      <a href="https://observablehq.com/d/fbb0a2b80d771787"><img src="img/adi_svi_screenshot.png"
+          alt="Screenshot of map showing comparison of ADI and SVI."></a>
+          <small class=nowrap><a
+            href="https://observablehq.com/d/fbb0a2b80d771787">Comparing the Area Deprivation Index to the Sovial Vulnerability Index
+          </a></small>
+      <notes>
+  This comparison is not perfect because I had to have block groups inherit the SVI from their containing tracts. I like in the SVI that you can see what components are pulling things in a certian directions. (look near downtown chapel hill)
+Look in NYC too.     
+
+</notes>
+    </div>
+
+  
+  <!-- Slide 19 -->
   <div>
     Svelte
     <ul>
-      <li class="nowrap"><a href="https://svelte.dev/">https://svelte.dev/</a></li>
+      <li class="nowrap"><a href="https://svelte.dev/">Svelte</a></li>
     
-      <li class="nowrap"><a href="https://kit.svelte.dev/">https://kit.svelte.dev/</a></li>
+      <li class="nowrap"><a href="https://kit.svelte.dev/">Sveltekit</a></li>
     </ul>
     <notes>introduction to svelte
       http://lessons.vaclab.unc.edu/lets_make_a_bar_chart_svg
@@ -184,23 +246,17 @@
   <!-- Last slide -->
   <div>
     <div>
-      <h1 class="nowrap">Find us, Follow Us, Sign up For our Newsletter
+      <h1 class="nowrap">
       </h1>
     </div>
 
     <div>
       Our websites
       <ul>
-        <li><a href="https://go.unc.edu/Workforce">go.unc.edu/Workforce</a></li>
-        <li><a href="https://nchealthworkforce.unc.edu">nchealthworkforce.unc.edu</a></li>
-        <li><a href="https://ncnursecast.unc.edu">ncnursecast.unc.edu</a></li>
-      </ul>
-    </div>
-    <div>
-      Twitter
-      <ul>
-        <li><a href="https://twitter.com/WorkforceNC">@WorkforceNC</a></li>
-        <li><a href="https://twitter.com/UNC_PHWRP">@UNC_PHWRP</a></li>
+        <li><a href="https://go.unc.edu/Workforce">Carolina Health Workforce Research Center & Program on Health Workforce Research and Policy</a></li>
+        <li><a href="https://nchealthworkforce.unc.edu">NC Health Workforce</a></li>
+        <li><a href="https://ncnursecast.unc.edu">Nursecast</a></li>
+        <li><a href="https://bhworkforce.unc.edu/">Behavioral Health Workforce Research Center</a></li>
       </ul>
     </div>
     <div>
